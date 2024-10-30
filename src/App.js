@@ -69,7 +69,9 @@ export default function App() {
           selectedFriend={selectedFriend}
           onSelection={handleSelection}
         />
+
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+
         <Button onClick={handleShowAddFriend}>
           {showAddFriend ? "Close" : "Add friend"}
         </Button>
@@ -111,12 +113,12 @@ function Friend({ friend, onSelection, selectedFriend }) {
 
       {friend.balance < 0 && (
         <p className="red">
-          {friend.name} owes you {Math.abs(friend.balance)}$
+          You owe {friend.name} {Math.abs(friend.balance)}€
         </p>
       )}
       {friend.balance > 0 && (
         <p className="green">
-          You owe {friend.name} {Math.abs(friend.balance)}$
+          {friend.name} owes you {Math.abs(friend.balance)}€
         </p>
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
@@ -153,14 +155,14 @@ function FormAddFriend({ onAddFriend }) {
 
   return (
     <form className="form-add-friend" onSubmit={handleSubmit}>
-      <label>🫂Friend name</label>
+      <label>👫 Friend name</label>
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
 
-      <label>🖼️ Image URL</label>
+      <label>🌄 Image URL</label>
       <input
         type="text"
         value={image}
@@ -196,7 +198,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         onChange={(e) => setBill(Number(e.target.value))}
       />
 
-      <label>💃 Your expense</label>
+      <label>🧍‍♀️ Your expense</label>
       <input
         type="text"
         value={paidByUser}
@@ -207,10 +209,10 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         }
       />
 
-      <label>🫂 {selectedFriend.name}'s expense</label>
+      <label>👫 {selectedFriend.name}'s expense</label>
       <input type="text" disabled value={paidByFriend} />
 
-      <label>💰 Who is paying the bill</label>
+      <label>🤑 Who is paying the bill</label>
       <select
         value={whoIsPaying}
         onChange={(e) => setWhoIsPaying(e.target.value)}
